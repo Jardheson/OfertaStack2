@@ -12,10 +12,17 @@ export default function SearchBar() {
 
   async function handleSearch(e?: React.FormEvent) {
     e?.preventDefault()
+    const normalizedQuery = q.trim()
+    if (!normalizedQuery) {
+      setError('Digite um termo para pesquisar.')
+      setResult(null)
+      return
+    }
+
     setLoading(true)
     setError(null)
     try {
-      const res = await runSearch(q)
+      const res = await runSearch(normalizedQuery)
       setResult(res)
       // move focus to results for keyboard users
       setTimeout(() => resultsRef.current?.focus(), 50)

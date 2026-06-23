@@ -6,6 +6,12 @@ describe('POST /api/search', () => {
     const res = await request(app).post('/api/search').send({});
     expect(res.statusCode).toBe(400);
   });
+
+  it('returns 400 when query is blank', async () => {
+    const res = await request(app).post('/api/search').send({ q: '   ' });
+    expect(res.statusCode).toBe(400);
+  });
+
   it('returns structured response for a query', async () => {
     const res = await request(app).post('/api/search').send({ q: 'Notebook Gamer' });
     expect(res.statusCode).toBe(200);
