@@ -111,7 +111,7 @@ Quadro Kanban sugerido para o projeto:
 - Review
 - Done
 
-Link do Trello: inserir aqui o link público do quadro.
+Link do Trello: https://trello.com/invite/b/6a31b03ee5721af894dc1318/ATTIfd9f622b626af9a06ae7a5e5f2c52e28E4BAAEDE/jardheson
 
 ### Vídeo
 

@@ -43,7 +43,7 @@ export default function SearchBar() {
         <input
           id="search-input"
           aria-label="Pesquisar produto"
-          className="flex-1 rounded-xl border border-gray-200 bg-white px-4 py-3 shadow-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-gray-700 dark:bg-gray-800"
+          className="min-w-0 flex-1 rounded-xl border border-gray-200 bg-white px-4 py-3 text-base shadow-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100 sm:text-sm dark:border-gray-700 dark:bg-gray-800"
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder="Digite o produto ou serviço..."
@@ -52,7 +52,7 @@ export default function SearchBar() {
         />
         <button
           type="submit"
-          className="rounded-xl bg-blue-600 px-5 py-3 font-medium text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
+          className="w-full rounded-xl bg-blue-600 px-5 py-3 font-medium text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
           disabled={loading}
         >
           {loading ? 'Buscando...' : 'Buscar'}
@@ -71,7 +71,7 @@ export default function SearchBar() {
           ref={resultsRef}
           tabIndex={-1}
           aria-live="polite"
-          className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-800"
+          className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5 dark:border-gray-700 dark:bg-gray-800"
           role="region"
           aria-label="Resultados da pesquisa"
         >
@@ -138,7 +138,7 @@ export default function SearchBar() {
               {(Array.isArray(result.related) ? result.related : String(result.related || '').split('\n')).filter(Boolean).map((item, index) => (
                 <li
                   key={index}
-                  className="rounded-xl border border-gray-100 bg-gray-50 px-3 py-2 text-sm text-gray-700 dark:border-gray-700 dark:bg-gray-900/40 dark:text-gray-200"
+                  className="break-words rounded-xl border border-gray-100 bg-gray-50 px-3 py-2 text-sm text-gray-700 dark:border-gray-700 dark:bg-gray-900/40 dark:text-gray-200"
                 >
                   {item}
                 </li>

@@ -52,13 +52,13 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-blue-50 p-6 transition-colors dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
-      <header className="mx-auto flex max-w-6xl items-center justify-between rounded-3xl border border-white/60 bg-white/80 px-5 py-4 shadow-sm backdrop-blur dark:border-gray-800 dark:bg-gray-900/70">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">OfertaStack2</h1>
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-blue-50 px-4 py-4 transition-colors sm:px-6 sm:py-6 lg:px-8 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
+      <header className="mx-auto flex max-w-6xl flex-col gap-4 rounded-3xl border border-white/60 bg-white/80 px-4 py-4 shadow-sm backdrop-blur sm:px-5 sm:py-4 lg:flex-row lg:items-center lg:justify-between dark:border-gray-800 dark:bg-gray-900/70">
+        <div className="min-w-0">
+          <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-white">OfertaStack2</h1>
           <p className="text-sm text-gray-600 dark:text-gray-300">Receba uma saída útil e demonstrável a partir da busca por produtos e serviços.</p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <button
             onClick={toggle}
             aria-label="Alternar tema"
@@ -69,23 +69,23 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="mx-auto mt-10 max-w-6xl space-y-10">
-        <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+      <main className="mx-auto mt-8 max-w-6xl space-y-8 lg:mt-10 lg:space-y-10">
+        <section className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)]">
+          <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6 lg:p-8 dark:border-gray-800 dark:bg-gray-900">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">Fluxo demonstrável</p>
-            <h2 className="mt-3 text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-balance text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
               Digite a consulta, processe a intenção e veja um resultado útil.
             </h2>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-gray-600 dark:text-gray-300">
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base dark:text-gray-300">
               A aplicação recebe a entrada do usuário, interpreta a categoria, resume o contexto e mostra sugestões relacionadas em uma interface pronta para demonstração.
             </p>
 
-            <div className="mt-8 rounded-2xl bg-gray-50 p-4 dark:bg-gray-800/60">
+            <div className="mt-6 rounded-2xl bg-gray-50 p-3 sm:p-4 dark:bg-gray-800/60">
               <SearchBar />
             </div>
           </div>
 
-          <aside className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+          <aside className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6 lg:p-8 dark:border-gray-800 dark:bg-gray-900">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">O que o sistema entrega</h3>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-gray-600 dark:text-gray-300">
               <li>• Entrada do usuário por busca livre.</li>
@@ -96,18 +96,18 @@ export default function Home() {
           </aside>
         </section>
 
-        <section className="grid gap-4 md:grid-cols-3">
-          <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6 dark:border-gray-800 dark:bg-gray-900">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400">Total de pesquisas</p>
-            <h3 className="mt-3 text-4xl font-bold text-gray-900 dark:text-white">{loading ? '...' : dashboard?.totalSearches ?? '—'}</h3>
+            <h3 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">{loading ? '...' : dashboard?.totalSearches ?? '—'}</h3>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">Volume acumulado de buscas realizadas na aplicação.</p>
           </div>
 
-          <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+          <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6 dark:border-gray-800 dark:bg-gray-900">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400">Categorias mais buscadas</p>
             <div className="mt-4 space-y-3">
               {(dashboard?.topCategories || []).slice(0, 3).map((item) => (
-                <div key={item.category} className="flex items-center justify-between rounded-2xl bg-gray-50 px-4 py-3 text-sm dark:bg-gray-800/60">
+                <div key={item.category} className="flex items-center justify-between gap-3 rounded-2xl bg-gray-50 px-4 py-3 text-sm dark:bg-gray-800/60">
                   <span className="font-medium text-gray-700 dark:text-gray-200">{item.category}</span>
                   <span className="text-gray-500 dark:text-gray-400">{item.total}</span>
                 </div>
@@ -115,11 +115,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+          <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6 dark:border-gray-800 dark:bg-gray-900">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400">Produtos mais procurados</p>
             <div className="mt-4 space-y-3">
               {(dashboard?.topQueries || []).slice(0, 3).map((item) => (
-                <div key={item.query} className="flex items-center justify-between rounded-2xl bg-gray-50 px-4 py-3 text-sm dark:bg-gray-800/60">
+                <div key={item.query} className="flex items-center justify-between gap-3 rounded-2xl bg-gray-50 px-4 py-3 text-sm dark:bg-gray-800/60">
                   <span className="font-medium text-gray-700 dark:text-gray-200">{item.query}</span>
                   <span className="text-gray-500 dark:text-gray-400">{item.total}</span>
                 </div>
@@ -137,16 +137,16 @@ export default function Home() {
         <section className="space-y-5">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">Cenários de uso</p>
-            <h3 className="mt-2 text-2xl font-semibold text-gray-900 dark:text-white">Dois exemplos prontos para demonstração</h3>
+            <h3 className="mt-2 text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Dois exemplos prontos para demonstração</h3>
           </div>
 
           <div className="grid gap-4 lg:grid-cols-2">
             {scenarios.map((scenario) => (
-              <article key={scenario.title} className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-                <div className="flex items-center justify-between gap-4">
-                  <div>
+              <article key={scenario.title} className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6 dark:border-gray-800 dark:bg-gray-900">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+                  <div className="min-w-0">
                     <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400">{scenario.title}</p>
-                    <h4 className="mt-1 text-xl font-semibold text-gray-900 dark:text-white">Usuário pesquisa “{scenario.query}”</h4>
+                    <h4 className="mt-1 text-lg font-semibold text-gray-900 sm:text-xl dark:text-white">Usuário pesquisa “{scenario.query}”</h4>
                   </div>
                   <span className="rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-700 dark:bg-blue-900/40 dark:text-blue-200">
                     {scenario.category}
@@ -202,11 +202,11 @@ export default function Home() {
             <h3 className="mt-2 text-2xl font-semibold text-gray-900 dark:text-white">Últimas buscas realizadas</h3>
           </div>
 
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {history.map((item: HistoryItem) => (
               <article key={`${item.query}-${item.created_at}`} className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
                 <p className="text-sm font-semibold text-gray-500 dark:text-gray-400">{item.category || 'Outros'}</p>
-                <h4 className="mt-2 text-lg font-semibold text-gray-900 dark:text-white">{item.corrected || item.query}</h4>
+                <h4 className="mt-2 break-words text-lg font-semibold text-gray-900 dark:text-white">{item.corrected || item.query}</h4>
                 <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">Consulta original: {item.query}</p>
               </article>
             ))}
@@ -224,13 +224,13 @@ export default function Home() {
           onClick={() => setSelectedProduct(null)}
         >
           <div
-            className="max-w-xl rounded-3xl bg-white p-6 shadow-2xl dark:bg-gray-900"
+            className="max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-3xl bg-white p-4 shadow-2xl sm:p-6 dark:bg-gray-900"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">Detalhes do produto</p>
-                <h3 id="product-modal-title" className="mt-2 text-2xl font-semibold text-gray-900 dark:text-white">
+                <h3 id="product-modal-title" className="mt-2 text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
                   {selectedProduct.title}
                 </h3>
               </div>
@@ -246,7 +246,7 @@ export default function Home() {
 
             <div className="mt-5 overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800">
               {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-              <img src={selectedProduct.imageUrl} alt={selectedProduct.title} className="h-56 w-full object-cover" />
+              <img src={selectedProduct.imageUrl} alt={selectedProduct.title} className="h-48 w-full object-cover sm:h-56" />
             </div>
 
             <p id="product-modal-description" className="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-300">
