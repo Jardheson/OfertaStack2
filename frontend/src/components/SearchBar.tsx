@@ -35,7 +35,7 @@ export default function SearchBar() {
   }
 
   return (
-    <form onSubmit={handleSearch} className="mt-4 space-y-4" aria-busy={loading}>
+    <form onSubmit={handleSearch} className="mt-2 space-y-4" aria-busy={loading}>
       <div className="flex flex-col gap-3 sm:flex-row">
         <label htmlFor="search-input" className="sr-only">
           Pesquisar produto
@@ -43,7 +43,7 @@ export default function SearchBar() {
         <input
           id="search-input"
           aria-label="Pesquisar produto"
-          className="min-w-0 flex-1 rounded-xl border border-gray-200 bg-white px-4 py-3 text-base shadow-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100 sm:text-sm dark:border-gray-700 dark:bg-gray-800"
+          className="min-w-0 flex-1 rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-base text-white shadow-sm outline-none transition placeholder:text-slate-400 focus:border-cyan-300/40 focus:ring-2 focus:ring-cyan-300/20 sm:text-sm"
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder="Digite o produto ou serviço..."
@@ -52,7 +52,7 @@ export default function SearchBar() {
         />
         <button
           type="submit"
-          className="w-full rounded-xl bg-blue-600 px-5 py-3 font-medium text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+          className="w-full rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 px-5 py-3.5 font-semibold text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
           disabled={loading}
         >
           {loading ? 'Buscando...' : 'Buscar'}
@@ -71,48 +71,48 @@ export default function SearchBar() {
           ref={resultsRef}
           tabIndex={-1}
           aria-live="polite"
-          className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5 dark:border-gray-700 dark:bg-gray-800"
+          className="rounded-[1.5rem] border border-white/10 bg-slate-950/80 p-4 shadow-[0_18px_50px_rgba(15,23,42,0.22)] sm:p-5"
           role="region"
           aria-label="Resultados da pesquisa"
         >
           <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-700 dark:bg-blue-900/40 dark:text-blue-200">
+            <span className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-3 py-1 text-sm font-semibold text-cyan-100">
               Categoria: {result.category || 'Não informada'}
             </span>
             {result.demo ? (
-              <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800 dark:bg-amber-900/40 dark:text-amber-200">
+              <span className="rounded-full border border-amber-300/20 bg-amber-400/10 px-3 py-1 text-xs font-medium text-amber-100">
                 Modo demonstração
               </span>
             ) : null}
             {result.cached ? (
-              <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-200">
+              <span className="rounded-full border border-emerald-300/20 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-100">
                 Resultado em cache
               </span>
             ) : null}
           </div>
 
           {result.corrected ? (
-            <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">Consulta interpretada: {result.corrected}</p>
+            <p className="mt-3 text-sm text-slate-400">Consulta interpretada: {result.corrected}</p>
           ) : null}
 
           {result.description ? (
-            <p className="mt-3 text-sm leading-6 text-gray-700 dark:text-gray-200">{result.description}</p>
+            <p className="mt-3 text-sm leading-6 text-slate-200">{result.description}</p>
           ) : null}
 
-          <p className="mt-4 text-base leading-7 text-gray-700 dark:text-gray-200">
+          <p className="mt-4 text-base leading-7 text-slate-100">
             {result.summary || 'Resumo gerado pela IA.'}
           </p>
 
           {Array.isArray(result.suggestedCategories) && result.suggestedCategories.length > 0 ? (
             <div className="mt-5">
-              <h4 className="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+              <h4 className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">
                 Categorias sugeridas
               </h4>
               <div className="mt-3 flex flex-wrap gap-2">
                 {result.suggestedCategories.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-700 dark:border-gray-700 dark:bg-gray-900/40 dark:text-gray-200"
+                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-slate-100"
                   >
                     {item}
                   </span>
@@ -122,23 +122,23 @@ export default function SearchBar() {
           ) : null}
 
           {result.improvedText ? (
-            <div className="mt-5 rounded-2xl bg-gray-50 p-4 dark:bg-gray-900/40">
-              <h4 className="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+            <div className="mt-5 rounded-[1.25rem] border border-cyan-300/10 bg-cyan-400/10 p-4">
+              <h4 className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-100/70">
                 Texto melhorado automaticamente
               </h4>
-              <p className="mt-3 text-sm leading-6 text-gray-700 dark:text-gray-200">{result.improvedText}</p>
+              <p className="mt-3 text-sm leading-6 text-cyan-50">{result.improvedText}</p>
             </div>
           ) : null}
 
           <div className="mt-5">
-            <h4 className="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+            <h4 className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">
               {Array.isArray(result.related) ? 'Produtos relacionados' : 'Sugestões relacionadas'}
             </h4>
             <ul className="mt-3 space-y-2">
               {(Array.isArray(result.related) ? result.related : String(result.related || '').split('\n')).filter(Boolean).map((item, index) => (
                 <li
                   key={index}
-                  className="break-words rounded-xl border border-gray-100 bg-gray-50 px-3 py-2 text-sm text-gray-700 dark:border-gray-700 dark:bg-gray-900/40 dark:text-gray-200"
+                  className="break-words rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-100"
                 >
                   {item}
                 </li>
@@ -149,7 +149,7 @@ export default function SearchBar() {
       )}
 
       {error ? (
-        <div id="search-error" role="alert" className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900/40 dark:bg-red-950/40 dark:text-red-200">
+        <div id="search-error" role="alert" className="rounded-2xl border border-red-300/20 bg-red-500/10 px-4 py-3 text-sm text-red-100">
           {error}
         </div>
       ) : null}
