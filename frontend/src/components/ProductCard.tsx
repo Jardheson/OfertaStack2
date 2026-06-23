@@ -18,8 +18,8 @@ export default function ProductCard({
   buttonLabel?: string
 }) {
   return (
-    <article className="group flex flex-col gap-4 rounded-[1.75rem] border border-white/10 bg-white/5 p-4 shadow-[0_18px_50px_rgba(15,23,42,0.22)] transition hover:-translate-y-1 hover:border-cyan-300/20 sm:flex-row sm:p-5">
-      <div className="flex h-40 w-full items-center justify-center overflow-hidden rounded-[1.25rem] bg-white/10 sm:h-28 sm:w-28">
+    <article className="group flex flex-col gap-4 rounded-[1.75rem] border border-slate-200 bg-white p-4 shadow-[0_18px_50px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:border-cyan-300/20 sm:flex-row sm:p-5 dark:border-white/10 dark:bg-white/5 dark:shadow-[0_18px_50px_rgba(15,23,42,0.22)]">
+      <div className="flex h-40 w-full items-center justify-center overflow-hidden rounded-[1.25rem] bg-slate-100 sm:h-28 sm:w-28 dark:bg-white/10">
         {imageUrl ? (
           // eslint-disable-next-line jsx-a11y/img-redundant-alt
           <img src={imageUrl} alt={title} className="h-full w-full rounded object-cover" />
@@ -29,12 +29,12 @@ export default function ProductCard({
       </div>
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-3">
-          <h4 className="break-words text-lg font-bold text-white">{title}</h4>
-          {price ? <span className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-100">Destaque</span> : null}
+          <h4 className="break-words text-lg font-bold text-slate-900 dark:text-white">{title}</h4>
+          {price ? <span className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-700 dark:text-cyan-100">Destaque</span> : null}
         </div>
-        <p className="mt-1 text-sm leading-6 text-slate-300">{description}</p>
+        <p className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">{description}</p>
         {benefits && (
-          <ul className="mt-3 ml-4 list-disc text-xs text-slate-300">
+          <ul className="mt-3 ml-4 list-disc text-xs text-slate-600 dark:text-slate-300">
             {benefits.map((b, i) => (
               <li key={i}>{b}</li>
             ))}
@@ -42,7 +42,7 @@ export default function ProductCard({
         )}
       </div>
       <div className="flex flex-row items-center justify-between gap-3 sm:w-28 sm:flex-col sm:items-end sm:justify-between">
-        <div className="text-lg font-black text-white sm:text-xl">{price}</div>
+        <div className="text-lg font-black text-slate-900 sm:text-xl dark:text-white">{price}</div>
         <button
           type="button"
           onClick={onView}
