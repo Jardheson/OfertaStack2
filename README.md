@@ -91,14 +91,14 @@ Este projeto foi estruturado para atender aos requisitos da atividade de Recuper
 - Vídeo explicativo no Google Drive;
 - Repositório GitHub privado com acesso para os perfis solicitados no enunciado.
 
-### Fluxo de Git esperado pelo enunciado
+### Fluxo de Git implementado
 
-- `main` como branch principal;
+- `main` como branch principal do repositório;
 - `develop` como branch de integração;
-- feature branches para cada funcionalidade;
-- commits frequentes com mensagens objetivas.
+- branches de funcionalidade para cada etapa do projeto;
+- branches de documentação, testes e correções para manter o histórico legível.
 
-Observação: a branch `develop` foi criada localmente no repositório do backend para refletir o fluxo solicitado.
+Observação: os links do Trello e do vídeo ainda precisam ser inseridos manualmente, pois dependem das entregas externas pedidas no enunciado.
 
 ### Trello
 
